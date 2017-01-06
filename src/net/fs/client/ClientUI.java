@@ -459,10 +459,6 @@ public class ClientUI implements ClientUII, WindowListener {
         JPanel p5 = new JPanel();
         p5.setLayout(new MigLayout("insets 5 0 0 0 "));
         mainPanel.add(p5, "align right");
-        JButton button_fsa = createButton_Link("FS高级版","http://www.xsocks.me/?fsc");
-        p5.add(button_fsa);
-        JButton button_wlt = createButton_Link("网络通内网穿透","http://www.youtusoft.com/?fsc");
-        p5.add(button_wlt);
 
         downloadSpeedField = new JLabel();
         downloadSpeedField.setHorizontalAlignment(JLabel.RIGHT);
