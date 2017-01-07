@@ -160,7 +160,7 @@ public class ClientUI implements ClientUII, WindowListener {
         initUI();
         checkQuanxian();
         loadConfig();
-        mainFrame.setTitle("FinalSpeed 1.2");
+        mainFrame.setTitle("FinalSpeed");
         mainPanel = (JPanel) mainFrame.getContentPane();
         mainPanel.setLayout(new MigLayout("align center , insets 10 10 10 10"));
         mainPanel.setBorder(null);
