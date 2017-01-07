@@ -2,10 +2,16 @@
 
 package net.fs.client;
 
+import java.io.UnsupportedEncodingException;
+
 public class ClientStartNoUI {
 
 	public static void main(String[] args) {
-		new ClientNoUI();
+		try {
+			new ClientNoUI();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

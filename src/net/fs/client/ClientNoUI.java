@@ -7,13 +7,10 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -41,9 +38,9 @@ public class ClientNoUI implements ClientUII{
 	
 	ClientConfig config;
 	
-	String configFilePath="client_config.json";
+	String configFilePath= new File(URLDecoder.decode(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent() + System.getProperty("file.separator") + "client_config.json";
 	
-	ClientNoUI(){
+	ClientNoUI() throws UnsupportedEncodingException {
 		loadConfig();
 		Route.localDownloadSpeed=config.downloadSpeed;
 		Route.localUploadSpeed=config.uploadSpeed;

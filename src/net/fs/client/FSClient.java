@@ -4,6 +4,8 @@ package net.fs.client;
 
 import org.apache.commons.cli.*;
 
+import java.io.UnsupportedEncodingException;
+
 public class FSClient {
 
     public static void main(String[] args) {
@@ -22,7 +24,11 @@ public class FSClient {
 
         boolean visible=!commandLine.hasOption("b");
         boolean min=commandLine.hasOption("min");
-        
-        new ClientUI(visible,min);
+
+        try {
+            new ClientUI(visible,min);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }

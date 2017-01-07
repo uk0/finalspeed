@@ -19,20 +19,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -80,7 +72,7 @@ public class ClientUI implements ClientUII, WindowListener {
 
     ClientConfig config = null;
 
-    String configFilePath = "client_config.json";
+    String configFilePath = new File(URLDecoder.decode(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent() + System.getProperty("file.separator") + "client_config.json";
 
     String logoImg = "img/offline.png";
 
@@ -141,7 +133,7 @@ public class ClientUI implements ClientUII, WindowListener {
         homeUrl = "http://www.ip4a.com/?client_fs";
     }
 
-    ClientUI(final boolean isVisible,boolean min) {
+    ClientUI(final boolean isVisible,boolean min) throws UnsupportedEncodingException {
     	this.min=min;
         setVisible(isVisible);
         

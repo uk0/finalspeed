@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,10 +27,10 @@ public class PortMapManager {
 	ArrayList<MapRule> mapList=new ArrayList<MapRule>();
 	
 	HashMap<Integer, MapRule> mapRuleTable=new HashMap<Integer, MapRule>();
+
+	String configFilePath= new File(URLDecoder.decode(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent() + System.getProperty("file.separator") + "port_map.json";
 	
-	String configFilePath="port_map.json";
-	
-	PortMapManager(MapClient mapClient){
+	PortMapManager(MapClient mapClient) throws UnsupportedEncodingException {
 		this.mapClient=mapClient;
 		//listenPort();
 		loadMapRule();
