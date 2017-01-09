@@ -18,7 +18,7 @@ public class ClientManager {
 	
 	Route route;
 	
-	int receivePingTimeout=8*1000;
+	int receivePingTimeout=60*1000;
 	
 	int sendPingInterval=1*1000;
 	
