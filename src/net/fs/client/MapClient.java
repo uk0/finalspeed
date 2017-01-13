@@ -2,31 +2,14 @@
 
 package net.fs.client;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import net.fs.rudp.*;
+import net.fs.utils.NetStatus;
+
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
-
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-
-import net.fs.rudp.ClientProcessorInterface;
-import net.fs.rudp.ConnectionProcessor;
-import net.fs.rudp.RUDPConfig;
-import net.fs.rudp.Route;
-import net.fs.rudp.TrafficEvent;
-import net.fs.rudp.Trafficlistener;
-import net.fs.utils.MLog;
-import net.fs.utils.NetStatus;
 
 public class MapClient implements Trafficlistener{
 
@@ -80,7 +63,7 @@ public class MapClient implements Trafficlistener{
 	
 	boolean tcpEnable;
 
-	MapClient(ClientUI ui,boolean tcpEnvSuccess) throws Exception {
+	MapClient(ClientUII ui,boolean tcpEnvSuccess) throws Exception {
 		this.ui=ui;
 		mapClient=this;
 		try {
