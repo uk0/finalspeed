@@ -6,7 +6,7 @@ public class RUDPConfig {
 
 	public static short protocal_ver=0;
 
-	public static int packageSize=1000;
+	public static int packageSize=512;//标准MTU为576字节,所以设置为548(576-8-20)字节以内
 	
 	public static boolean twice_udp=false;
 	
