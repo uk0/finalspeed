@@ -2,12 +2,12 @@
 
 package net.fs.rudp;
 
+import net.fs.utils.MLog;
+
 import java.net.InetAddress;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-
-import net.fs.utils.MLog;
 
 
 public class ClientManager {
@@ -18,7 +18,7 @@ public class ClientManager {
 	
 	Route route;
 	
-	int receivePingTimeout=60*1000;
+	int receivePingTimeout=8*1000;
 	
 	int sendPingInterval=1*1000;
 	
@@ -56,10 +56,12 @@ public class ClientManager {
 				}else {
 					//超时关闭client
 					MLog.println("超时关闭client "+cc.dstIp.getHostAddress()+":"+cc.dstPort+" "+new Date());
-//					System.exit(0);
 					synchronized (syn_clientTable) {
 						cc.close();
 					}
+                    if(route.mode == route.mode_client){
+                        System.exit(1);
+                    }
 				}
 			}
 		}
