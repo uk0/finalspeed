@@ -146,8 +146,7 @@ public class ClientControl {
 				final ConnectionUDP conn=connTable.get(it.next());
 				if(conn!=null){
 					Route.es.execute(new Runnable() {
-						
-						@Override
+
 						public void run() {
 							conn.stopnow=true;
 							conn.destroy(true);

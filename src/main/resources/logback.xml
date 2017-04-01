@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <property name="log_dir" value="logs/"/>
+    <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${PID:- } --- [%15.15t] %-40.40logger{39}(%F:%L\\) : %m%n"/>
+    <property name="dailyDateFormat" value="%d{yyyy-MM-dd}"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${logFormat}</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <prudent>${prudent}</prudent>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/finalspeed.${dailyDateFormat}.log</fileNamePattern>
+            <maxHistory>6</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logFormat}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="INFO"/>
+    </root>
+</configuration>
